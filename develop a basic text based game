@@ -1,0 +1,93 @@
+def intro():
+    print("Welcome to the Adventure Game!")
+    print("You are in a dark forest looking for a hidden treasure.")
+    print("You have to make choices to find the treasure. Good luck!\n")
+
+def first_choice():
+    print("You are at a crossroad. Where do you want to go?")
+    print("1. Left")
+    print("2. Right")
+    choice = input("Enter 1 or 2: ")
+    return choice
+
+def left_path():
+    print("\nYou have chosen the left path. You walk for a while and find a river.")
+    print("You see a boat and a bridge. What do you do?")
+    print("1. Take the boat")
+    print("2. Cross the bridge")
+    choice = input("Enter 1 or 2: ")
+    return choice
+
+def right_path():
+    print("\nYou have chosen the right path. You walk for a while and find a cave.")
+    print("The cave is dark and you hear strange noises. What do you do?")
+    print("1. Enter the cave")
+    print("2. Continue walking")
+    choice = input("Enter 1 or 2: ")
+    return choice
+
+def boat_path():
+    print("\nYou have taken the boat and crossed the river safely.")
+    print("You see a house in the distance. Do you want to go there?")
+    print("1. Yes")
+    print("2. No")
+    choice = input("Enter 1 or 2: ")
+    return choice
+
+def bridge_path():
+    print("\nYou are crossing the bridge and it collapses! You fall into the river and get swept away.")
+    print("Game Over!")
+    return "game_over"
+
+def cave_path():
+    print("\nYou enter the cave and find a treasure chest! You have found the treasure!")
+    print("Congratulations, you win!")
+    return "win"
+
+def walk_path():
+    print("\nYou continue walking and get lost in the forest.")
+    print("Game Over!")
+    return "game_over"
+
+def house_path():
+    print("\nYou go to the house and find a treasure map!")
+    print("You follow the map and find the treasure!")
+    print("Congratulations, you win!")
+    return "win"
+
+def no_house_path():
+    print("\nYou decide not to go to the house and get lost in the forest.")
+    print("Game Over!")
+    return "game_over"
+
+def main():
+    intro()
+    choice1 = first_choice()
+    
+    if choice1 == "1":
+        choice2 = left_path()
+        if choice2 == "1":
+            choice3 = boat_path()
+            if choice3 == "1":
+                result = house_path()
+            else:
+                result = no_house_path()
+        else:
+            result = bridge_path()
+    elif choice1 == "2":
+        choice2 = right_path()
+        if choice2 == "1":
+            result = cave_path()
+        else:
+            result = walk_path()
+    else:
+        print("Invalid choice! Game Over.")
+        result = "game_over"
+    
+    if result == "win":
+        print("Thanks for playing! You found the treasure!")
+    else:
+        print("Thanks for playing! Better luck next time.")
+
+
+    main()
